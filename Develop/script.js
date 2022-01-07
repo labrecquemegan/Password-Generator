@@ -10,7 +10,7 @@ var ask
 var choices
 
 // Password variables for the conditions
-var number = [1, 2, 3, 4, 5, 6, 7, 8, 9] 
+var number = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 var special = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "?"]
 var letter = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 var upper = letter.map(toUppercase())
@@ -22,7 +22,7 @@ function generatePassword() {
   // If prompt is left blank
   if (!ask) {
     alert("Please enter a value!")
-  } else if (ask <8 || ask < 128) {
+  } else if (ask < 8 || ask < 128) {
     // if user picks a number outside of the parameters an error message will show
     ask = parseInt(prompt("Please choose between 8 and 128"))
   } else {
@@ -60,6 +60,17 @@ function generatePassword() {
     choices = special.concat(upper)
   } else if (confirmSpecial && confirmLower) {
     choices = special.concat(letter)
+  } else if (confirmUpper && confirmLower) {
+    choices = upper.concat(letter)
+  } //for only one criteria selected
+    else if (confirmNumber) {
+    choices = number
+  } else if (confirmSpecial) {
+    choices = special
+  } else if (confirmUpper) {
+    choices = upper
+  } else if (confirmLower) {
+    choices = letter
   }
 
 
