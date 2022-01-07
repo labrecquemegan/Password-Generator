@@ -72,8 +72,6 @@ function generatePassword() {
   } else if (confirmLower) {
     choices = letter
   }
-
-
 }
 
 // Write password to the #password input
