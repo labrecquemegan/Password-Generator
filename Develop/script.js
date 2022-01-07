@@ -72,6 +72,24 @@ function generatePassword() {
   } else if (confirmLower) {
     choices = letter
   }
+
+  // create a variable for the array that will hold the password based on the length given
+  var password = []
+
+  // creates the password for the given length
+  for (var i = 0; i < ask; i++) {
+    var chosenChoices = choices[Math.floor(Math.random() * choices.length)]
+    password.push(chosenChoices)
+  }
+  // this makes the password array and converts it to a string
+  var pw = password.join("")
+  userInput(pw)
+  return pw
+}
+
+// puts the password into the textbox
+function userInput(pw) {
+  document.getElementById("password").textContent = pw
 }
 
 // Write password to the #password input
