@@ -35,7 +35,7 @@ function generatePassword() {
 
   // This section creates the password depending on the user choices
   // for 4 negative options
-  if (!confirmNumber %% !confirmSpecial && !confirmUpper && !confirmLower) {
+  if (!confirmNumber && !confirmSpecial && !confirmUpper && !confirmLower) {
     choices = alert("You must choose at least one critera")
   } else if (confirmNumber && confirmSpecial && confirmUpper && confirmLower) {
     // if all answer choices chosen
