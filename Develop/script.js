@@ -15,10 +15,19 @@ var special = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "?"]
 var letter = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 var upper = letter.map(toUppercase())
 
+// Write password to the #password input
+function writePassword() {
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
+
+  passwordText.value = password;
+
+}
+
 // make the function to generate the password
 function generatePassword() {
   // ask for user input
-  ask = parseInt(prompt("How many characters would you like your password? Choose between 8 and 128"))
+  var ask = parseInt(prompt("How many characters would you like your password? Choose between 8 and 128"))
   // If prompt is left blank
   if (!ask) {
     alert("Please enter a value!")
@@ -27,10 +36,10 @@ function generatePassword() {
     ask = parseInt(prompt("Please choose between 8 and 128"))
   } else {
     // ask user for their desired criteria
-    confirmNumber = confirm("Will your password contain numbers?")
-    confirmSpecial = confirm("Will your password contain special characters?")
-    confirmUpper = confirm("Will your password contain Uppercase letters?")
-    confirmLower = confirm("Will your password contain Lowercase letters?")
+    var confirmNumber = confirm("Will your password contain numbers?")
+    var confirmSpecial = confirm("Will your password contain special characters?")
+    var confirmUpper = confirm("Will your password contain Uppercase letters?")
+    var confirmLower = confirm("Will your password contain Lowercase letters?")
   }
 
   // This section creates the password depending on the user choices
@@ -73,6 +82,7 @@ function generatePassword() {
     choices = letter
   }
 
+
   // create a variable for the array that will hold the password based on the length given
   var password = []
 
@@ -82,24 +92,17 @@ function generatePassword() {
     password.push(chosenChoices)
   }
   // this makes the password array and converts it to a string
-  var pw = password.join("")
-  userInput(pw)
-  return pw
+  var password = password.join("")
+  userInput(password)
+  return password
 }
 
 // puts the password into the textbox
-function userInput(pw) {
-  document.getElementById("password").textContent = pw
-}
+// function userInput(password) {
+//   document.getElementById("password").textContent = pw
+// }
 
-// Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
 
-  passwordText.value = password;
-
-}
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+generateBtn.addEventListener("click", writePassword());
