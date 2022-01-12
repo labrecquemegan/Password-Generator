@@ -13,27 +13,21 @@ var choices
 var number = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 var special = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "?"]
 var letter = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
-var upper = letter.map(toUppercase())
+var upper = letter.map(function(char){return char.toUpperCase()})
 
-// Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
 
-  passwordText.value = password;
-
-}
 
 // make the function to generate the password
 function generatePassword() {
+  console.log("hit")
   // ask for user input
-  var length = parseInt(prompt("How many characters would you like your password? Choose between 8 and 128"))
+  var length = prompt("How many characters would you like your password? Choose between 8 and 128")
   // If prompt is left blank
   if (!length) {
     alert("Please enter a value!")
-  } else if (length < 8 || length < 128) {
+  } else if (length < 8 || length > 128) {
     // if user picks a number outside of the parameters an error message will show
-    length = parseInt(prompt("Please choose between 8 and 128"))
+    length = prompt("Please choose between 8 and 128")
   } else {
     // ask user for their desired criteria
     var confirmNumber = confirm("Will your password contain numbers?")
@@ -87,7 +81,7 @@ function generatePassword() {
   var password = []
 
   // creates the password for the given length
-  for (var i = 0; i < ask; i++) {
+  for (var i = 0; i < length; i++) {
     var chosenChoices = choices[Math.floor(Math.random() * choices.length)]
     password.push(chosenChoices)
   }
@@ -102,7 +96,14 @@ function generatePassword() {
 //   document.getElementById("password").textContent = pw
 // }
 
+// Write password to the #password input
+function writePassword() {
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
 
+  passwordText.value = password;
+
+}
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
