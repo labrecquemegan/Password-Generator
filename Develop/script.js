@@ -27,13 +27,13 @@ function writePassword() {
 // make the function to generate the password
 function generatePassword() {
   // ask for user input
-  var ask = parseInt(prompt("How many characters would you like your password? Choose between 8 and 128"))
+  var length = parseInt(prompt("How many characters would you like your password? Choose between 8 and 128"))
   // If prompt is left blank
-  if (!ask) {
+  if (!length) {
     alert("Please enter a value!")
-  } else if (ask < 8 || ask < 128) {
+  } else if (length < 8 || length < 128) {
     // if user picks a number outside of the parameters an error message will show
-    ask = parseInt(prompt("Please choose between 8 and 128"))
+    length = parseInt(prompt("Please choose between 8 and 128"))
   } else {
     // ask user for their desired criteria
     var confirmNumber = confirm("Will your password contain numbers?")
@@ -93,7 +93,7 @@ function generatePassword() {
   }
   // this makes the password array and converts it to a string
   var password = password.join("")
-  userInput(password)
+  // userInput(password)
   return password
 }
 
@@ -105,4 +105,4 @@ function generatePassword() {
 
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword());
+generateBtn.addEventListener("click", writePassword);
